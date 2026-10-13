@@ -54,7 +54,7 @@ grep -A3 '=== publish' ~/.claude/routines/logs/charchat-digest-$(date +%Y%m%d).l
 
 | 날짜 | 로그 | 원인 |
 |---|---|---|
-| 2026-09-11 ~ 09-24 | `Failed to authenticate: OAuth session expired and could not be refreshed`, exit 1 | Claude Code 로그인 만료. 9/25부터 정상. 9/11·9/12 로그는 보관 기한이 지나 지워졌지만, 그 날짜 항목도 없다 |
+| 2026-09-11 \~ 09-24 | `Failed to authenticate: OAuth session expired and could not be refreshed`, exit 1 | Claude Code 로그인 만료. 9/25부터 정상. 9/11·9/12 로그는 보관 기한이 지나 지워졌지만, 그 날짜 항목도 없다 |
 | 2026-10-07 | `Background tasks still running after 600s; terminating.`, **exit 0** | `claude -p`에서 백그라운드 서브에이전트가 600초에 강제 종료돼 병합까지 가지 못했다. 이후 루틴 메모에 "서브에이전트를 쓰지 말거나 포그라운드로 돌릴 것"이 기록됐다 |
 | 2026-10-08 | `API Error: Can't reach the API server … (ENOTFOUND)`, exit 1 | 네트워크·DNS 문제. 재시도 장치는 없다 |
 
@@ -98,7 +98,8 @@ PushNotification은 Remote Control이 꺼져 있으면 전송되지 않는다. �
 
 1. 이 저장소를 `~/charchat-digest`에 clone한다.
 2. 파일을 원래 자리로 복사한다.
-   - `routine/`의 스크립트·지침 6개와 `data/`의 파일 2개 → `~/.claude/routines/`. 같은 폴더에 `logs/`도 만든다.
+   - `routine/`의 스크립트·지침 7개와 `data/`의 파일 2개 → `~/.claude/routines/`. 같은 폴더에 `logs/`도 만든다.
+   - md 사본(지침, 메모, `data/charchat-digest.md`)은 물결표가 `\~`로 이스케이프돼 있다. 그대로 써도 동작에는 지장이 없지만, 원본과 똑같이 되돌리려면 `sed -i '' 's/\\~/~/g' <파일>`을 쓴다.
    - `routine/memory/`의 파일 → `~/.claude/projects/-Users-rokrokss--claude-routines/memory/`
    - `launchd/*.plist` → `~/Library/LaunchAgents/`
 3. plist를 각각 등록한다.

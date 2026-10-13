@@ -32,6 +32,7 @@ launchd: com.rokrokss.charchat-digest-web (상시 실행)
 
 - 이 저장소의 `routine/`, `launchd/`, `data/`는 `publish-md.sh`가 매 실행 뒤 덮어쓰는 사본이다. 코드는 원본 쪽에서 고친다.
 - `digest/`는 `render-md.py`가 매번 jsonl로부터 새로 만든다.
+- **물결표 처리:** GitHub에서는 `1~3장 … 200~300원`처럼 한 단락에 물결표가 두 번 나오면 그 사이가 취소선이 된다. 이를 막으려고 `escape-tilde.py`가 게시할 때마다 저장소의 모든 `.md`에서 코드 밖 물결표를 `\~`로 바꾼다. 그래서 md 사본은 원본과 이 점만 다르다. 문서를 새로 써도 다음 게시 때 자동으로 처리된다.
 
 | 저장소 경로 | 운영 원본 | 역할 |
 |---|---|---|
@@ -39,6 +40,7 @@ launchd: com.rokrokss.charchat-digest-web (상시 실행)
 | `routine/charchat-digest-prompt.md` | 〃 | Claude에게 주는 수집 지침 |
 | `routine/merge-items.py` | 〃 | `today-items.json` 검증·병합 |
 | `routine/render-md.py` | 〃 | jsonl을 마크다운으로 변환 |
+| `routine/escape-tilde.py` | 〃 | 저장소의 모든 md에서 물결표 취소선 방지 |
 | `routine/publish-md.sh` | 〃 | 사본 복사, 렌더링, 커밋, 푸시 |
 | `routine/digest-server.py` | 〃 | 대시보드 웹앱 |
 | `routine/memory/` | `~/.claude/projects/-Users-rokrokss--claude-routines/memory/` | 루틴이 실행하며 스스로 쌓은 수집 요령 (Claude Code 메모리) |
