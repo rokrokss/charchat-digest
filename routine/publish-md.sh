@@ -18,4 +18,10 @@ cd "$REPO" || exit 1
 git add -A
 # 변경이 없으면 커밋하지 않는다. 푸시가 실패해도(오프라인 등) 커밋은 남고 다음 실행 때 같이 올라간다
 git diff --cached --quiet || git commit -q -m "digest $(date '+%Y-%m-%d')"
-git push -q origin main 2>&1 || echo "push 실패 — 다음 실행 때 재시도"
+# GitHub 웹 편집 등 원격에만 있는 커밋 위로 로컬 커밋을 올린다. 충돌하면 되돌리고 푸시하지 않는다(어차피 거부된다)
+if git pull -q --rebase origin main 2>&1; then
+  git push -q origin main 2>&1 || echo "push 실패 — 다음 실행 때 재시도"
+else
+  git rebase --abort 2>/dev/null
+  echo "pull --rebase 실패 — 충돌이면 손으로 정리 필요, 오프라인이면 다음 실행 때 재시도"
+fi
