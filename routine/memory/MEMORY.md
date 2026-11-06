@@ -1,1 +1,1 @@
-- [다이제스트 수집 요령](digest-collection-quirks.md) — 아카 28h엔 \~19페이지(72h 40페이지), 아카·디시 댓글 API, 디시 이미지 data-original, 플랫폼 태그 정본, -p 모드 서브에이전트 600초 종료, 실행 누락일은 직전 성공 시각부터 날짜 분할 백필, 기기 시간대 바뀌면 TZ=Asia/Seoul로 KST 확인
+- [다이제스트 수집 요령](digest-collection-quirks.md) — 아카 28h엔 \~18페이지(72h 40페이지), 아카·디시 댓글 API, 디시 이미지 data-original, 플랫폼 태그 정본, -p 모드 서브에이전트 600초 종료, 실행 누락일은 직전 성공 시각부터 날짜 분할 백필, 기기 시간대 바뀌면 TZ=Asia/Seoul로 KST 확인, 유저 캡처 요약 수치는 사실로 쓰지 말 것
